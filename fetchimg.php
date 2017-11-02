@@ -68,50 +68,50 @@ $conn->close();
        <a href="http://ulc.srmuniv.ac.in/">e-think</a>
        </div>
      </nav>
-         <div class="card-panel teal lighten-2 ">
+         <div class="card-panel teal lighten-2 " id="quiz_container">
          <div class="card content">
       <?php
-      for($i=0;$i<count($array);$i++) {?>
+      for($i=0,$x=1;$i<count($array);$i++,$x=$x+6) {?>
             <div class="questions">
                 <p> Question <span><?php echo $id[$i];?></span></p>
                 <br>
                     <img src="<?php echo $array[$i]; ?>" />
                     <div class="row">
                     <div class="input-field col s6">
-                    <input class="option" placeholder="enter across1" type="text" id="across1"  >
+                    <input class="option" placeholder="enter across1" type="text" id="across<?php echo $x; ?>"  >
                     </div>
                     <div class="input-field col s6">
-                    <input class="option" placeholder="enter down1" type="text"   id="down1"  >
+                    <input class="option" placeholder="enter down1" type="text"   id="down<?php echo $x; ?>"  >
                     </div>
                     <div class="input-field col s6">
-                    <input class="option" placeholder="enter across2" type="text"  id="across2" >
+                    <input class="option" placeholder="enter across2" type="text"  id="across<?php echo $x+1; ?>" >
                     </div>
                     <div class="input-field col s6">
-                    <input class="option" placeholder="enter down2" type="text"  id="down2"  >
+                    <input class="option" placeholder="enter down2" type="text"  id="down<?php echo $x+1; ?>"  >
                     </div>
                     <div class="input-field col s6">
-                    <input class="option" placeholder="enter across3" type="text"  id="across3" >
+                    <input class="option" placeholder="enter across3" type="text"  id="across<?php echo $x+2; ?>" >
                     </div>
                     <div class="input-field col s6">
-                    <input class="option" placeholder="enter down3" type="text" id="down3">
+                    <input class="option" placeholder="enter down3" type="text" id="down<?php echo $x+2; ?>">
                     </div>
                     <div class="input-field col s6">
-                    <input class="option" placeholder="enter across4" type="text"  id="across4" >
+                    <input class="option" placeholder="enter across4" type="text"  id="across<?php echo $x+3; ?>" >
                     </div>
                     <div class="input-field col s6">
-                    <input class="option" placeholder="enter down4" type="text"  id="down4" >
+                    <input class="option" placeholder="enter down4" type="text"  id="down<?php echo $x+3; ?>" >
                     </div>
                     <div class="input-field col s6">
-                    <input class="option" placeholder="enter across5" type="text"  id="across5" >
+                    <input class="option" placeholder="enter across5" type="text"  id="across<?php echo $x+4; ?>" >
                     </div>
                     <div class="input-field col s6">
-                    <input class="option" placeholder="enter down5" type="text"  id="down5" >
+                    <input class="option" placeholder="enter down5" type="text"  id="down<?php echo $x+4; ?>" >
                     </div>
                     <div class="input-field col s6">
-                    <input class="option" placeholder="enter across6" type="text"  id="across6" >
+                    <input class="option" placeholder="enter across6" type="text"  id="across<?php echo $x+5; ?>" >
                     </div>
                     <div class="input-field col s6">
-                    <input class="option" placeholder="enter down6" type="text"  id="down6" >
+                    <input class="option" placeholder="enter down6" type="text"  id="down<?php echo $x+5; ?>" >
                     </div>
                     </div>
                     </div>
@@ -176,7 +176,7 @@ function validate_answers(){
         var user_answers3 = [];
         var user_answers4 = [];
         var user_answers5 = [];
-        var user_answers6 = []; 
+        var user_answers6 = [];
         var user_answers7 = [];
         var user_answers8 = [];
         var user_answers9 = [];
@@ -184,92 +184,89 @@ function validate_answers(){
         var user_answers11 = [];
         var user_answers12 = [];
     	var x =1;
-    	for(x=1;x<=num_question;x++){
-    		user_answers1[x-1]=$("#across1"+x).val();
-                user_answers2[x-1]=$("#across2"+x).val();
-                user_answers3[x-1]=$("#across3"+x).val();
-                user_answers4[x-1]=$("#across4"+x).val();
-                user_answers5[x-1]=$("#across5"+x).val();
-                user_answers6[x-1]=$("#across6"+x).val();
-                user_answers7[x-1]=$("#down1"+x).val();
-                user_answers8[x-1]=$("#down2"+x).val();
-                user_answers9[x-1]=$("#down3"+x).val();
-                user_answers10[x-1]=$("#down4"+x).val();
-                user_answers11[x-1]=$("#down5"+x).val();
-                user_answers12[x-1]=$("#down6"+x).val();
+    	for(x=1,i=1;x<=num_question;x++,i=i+6){
+    		user_answers1[x-1]=$("#across"+(i)).val();
+                user_answers2[x-1]=$("#down"+(i)).val();
+                user_answers3[x-1]=$("#across"+(i+1)).val();
+                user_answers4[x-1]=$("#down"+(i+1)).val();
+                user_answers5[x-1]=$("#across"+(i+2)).val();
+                user_answers6[x-1]=$("#down"+(i+2)).val();
+                user_answers7[x-1]=$("#across"+(i+3)).val();
+                user_answers8[x-1]=$("#down"+(i+3)).val();
+                user_answers9[x-1]=$("#across"+(i+4)).val();
+                user_answers10[x-1]=$("#down"+(i+4)).val();
+                user_answers11[x-1]=$("#across"+(i+5)).val();
+                user_answers12[x-1]=$("#down"+(i+5)).val();
     		console.log(user_answers1[x-1]);
                 console.log(user_answers2[x-1]);
-                console.log(user_answers3[x-1]);
-                console.log(user_answers4[x-1]);
-                console.log(user_answers5[x-1]);
-                console.log(user_answers6[x-1]);
-                console.log(user_answers7[x-1]);
-                console.log(user_answers8[x-1]);
-                console.log(user_answers9[x-1]);
-                console.log(user_answers10[x-1]);
-                console.log(user_answers11[x-1]);
-                console.log(user_answers12[x-1]);
-                
-    	}
+          }      
     	var result = [];
+        var checker = 0;
     	for(x=0;x<num_question;x++){
-    		if(user_answers1[x]==across1[x] && user_answers2[x]==across2[x] && user_answers3[x]==across3[x] && user_answers4[x]==across4[x] && user_answers5[x]==across5[x] && user_answers6[x]==across6[x] && user_answers7[x]==down1[x] && user_answers8[x]==down2[x] && user_answers9[x]==down3[x] && user_answers10[x]==down4[x] && user_answers11[x]==down5[x] && user_answers12[x]==down6[x]  )
-    		  
-                  result[x]=1;
-    		else
-    		  result[x]=0;
+    		if(user_answers1[x]==across1[x] && user_answers2[x]==down1[x])
+                  checker++;
+                if(user_answers3[x]==across2[x] && user_answers4[x]==down2[x])
+                  checker++;
+                if(user_answers5[x]==across3[x] && user_answers6[x]==down3[x])
+                  checker++;
+                if(user_answers7[x]==across4[x] && user_answers8[x]==down4[x])
+                  checker++;
+                if(user_answers9[x]==across5[x] && user_answers10[x]==down5[x])
+                  checker++;
+                if(user_answers11[x]==across6[x] && user_answers12[x]==down6[x])
+                  checker++;
     	}
     	var result_string = "<div class = \"card\"><div class = \"card-content\">";
     	for(x = 1;x<=num_question;x++){
     	  var card_color;
-    	  if(result[x-1]==0){
-    	    card_color = "red lighten-5";
-    	  }
-    	  else{
+    	  if(checker==6*num_question){
     	    card_color = "green lighten-5";
     	  }
+    	  else if(checker==0) {
+    	    card_color = "red lighten-5";
+    	  }
+          else {
+    	    card_color = " orange lighten-4";
+    	  }
     	  result_string = result_string + "<div class = \"card "+card_color+"\"><div class = \"card-content\">";
-    	  result_string = result_string + "<div class = \"row\">";
-    	  result_string = result_string + "<p><b> Question : " + x + " </br></br> " + questions[x-1] + "</b></p>";
-    	  result_string = result_string + "</div>";
     	  result_string = result_string + "<div class = \"row\">";
     	  result_string = result_string + "<div class= \"col s12 l6\">";
     	  result_string = result_string + "<p><b> Your Answer : </b>" + user_answers1[x-1]+"</p>"; 
           result_string = result_string + "<p><b> Your Answer : </b>" + user_answers2[x-1]+"</p>";
-          result_string = result_string + "<p><b> Your Answer : </b>" + user_answers3[x-1]+"</p>";
+          result_string = result_string + "<p><b> Your Answer : </b>" + user_answers3[x-1]+"</p>"; 
           result_string = result_string + "<p><b> Your Answer : </b>" + user_answers4[x-1]+"</p>";
-          result_string = result_string + "<p><b> Your Answer : </b>" + user_answers5[x-1]+"</p>";
+          result_string = result_string + "<p><b> Your Answer : </b>" + user_answers5[x-1]+"</p>"; 
           result_string = result_string + "<p><b> Your Answer : </b>" + user_answers6[x-1]+"</p>";
-          result_string = result_string + "<p><b> Your Answer : </b>" + user_answers7[x-1]+"</p>";
+          result_string = result_string + "<p><b> Your Answer : </b>" + user_answers7[x-1]+"</p>"; 
           result_string = result_string + "<p><b> Your Answer : </b>" + user_answers8[x-1]+"</p>";
-          result_string = result_string + "<p><b> Your Answer : </b>" + user_answers9[x-1]+"</p>";
+          result_string = result_string + "<p><b> Your Answer : </b>" + user_answers9[x-1]+"</p>"; 
           result_string = result_string + "<p><b> Your Answer : </b>" + user_answers10[x-1]+"</p>";
-          result_string = result_string + "<p><b> Your Answer : </b>" + user_answers11[x-1]+"</p>";
+          result_string = result_string + "<p><b> Your Answer : </b>" + user_answers11[x-1]+"</p>"; 
           result_string = result_string + "<p><b> Your Answer : </b>" + user_answers12[x-1]+"</p>";
           result_string = result_string + "</div>";
     	  result_string = result_string + "<div class = \"col s12 l6\">";
     	  result_string = result_string + "<p id = \"correct_answer\"><b> Correct Answer : </b>" + across1[x-1]+ "</p>";
-          result_string = result_string + "<p id = \"correct_answer\"><b> Correct Answer : </b>" + across2[x-1]+ "</p>";
-    	  result_string = result_string + "<p id = \"correct_answer\"><b> Correct Answer : </b>" + across3[x-1]+ "</p>";
-          result_string = result_string + "<p id = \"correct_answer\"><b> Correct Answer : </b>" + across4[x-1]+ "</p>";
-          result_string = result_string + "<p id = \"correct_answer\"><b> Correct Answer : </b>" + across5[x-1]+ "</p>";
-          result_string = result_string + "<p id = \"correct_answer\"><b> Correct Answer : </b>" + across6[x-1]+ "</p>";
           result_string = result_string + "<p id = \"correct_answer\"><b> Correct Answer : </b>" + down1[x-1]+ "</p>";
+    	  result_string = result_string + "<p id = \"correct_answer\"><b> Correct Answer : </b>" + across2[x-1]+ "</p>";
           result_string = result_string + "<p id = \"correct_answer\"><b> Correct Answer : </b>" + down2[x-1]+ "</p>";
+    	  result_string = result_string + "<p id = \"correct_answer\"><b> Correct Answer : </b>" + across3[x-1]+ "</p>";
           result_string = result_string + "<p id = \"correct_answer\"><b> Correct Answer : </b>" + down3[x-1]+ "</p>";
+    	  result_string = result_string + "<p id = \"correct_answer\"><b> Correct Answer : </b>" + across4[x-1]+ "</p>";
           result_string = result_string + "<p id = \"correct_answer\"><b> Correct Answer : </b>" + down4[x-1]+ "</p>";
+    	  result_string = result_string + "<p id = \"correct_answer\"><b> Correct Answer : </b>" + across5[x-1]+ "</p>";
           result_string = result_string + "<p id = \"correct_answer\"><b> Correct Answer : </b>" + down5[x-1]+ "</p>";
+    	  result_string = result_string + "<p id = \"correct_answer\"><b> Correct Answer : </b>" + across6[x-1]+ "</p>";
           result_string = result_string + "<p id = \"correct_answer\"><b> Correct Answer : </b>" + down6[x-1]+ "</p>";
           result_string = result_string + "</div>";
     	  result_string = result_string + "</div>";
-    	  result_string = result_string + "<div class = \"row\">";
+    	  result_string = result_string + "</div></div>";
+    	}
+          result_string = result_string + "<div class = \"row\">";
     	  result_string = result_string + "<div class = \"col s12 l2\">";
-    	  result_string = result_string + "<p id = \"mark\">Mark : " + result[x-1] + "</p>";
+    	  result_string = result_string + "<p id = \"mark\">Mark scored : " + checker + "</p>";
     	  result_string = result_string + "</div>";
     	  result_string = result_string + "</div>";
     	  result_string = result_string + "</div></div>";
-    	}
-    	result_string = result_string + "</div></div>";
     	$("#quiz_container").html(result_string);
     }
 </script>
